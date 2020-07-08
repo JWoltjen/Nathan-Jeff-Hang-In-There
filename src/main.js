@@ -2,7 +2,6 @@
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
-var randomizeButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,7 +115,11 @@ getRandomPoster();
 
 
 // event listeners go here 👇
-randomizeButton.addEventListener('click', getRandomPoster);
+document.querySelector('.show-random').addEventListener('click', getRandomPoster);
+document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
+document.querySelector('.show-main').addEventListener('click', showMainPosterSection)
+document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection)
+document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -142,4 +145,20 @@ function randomizeTitle() {
 function randomizeQuote() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   return posterQuote.innerText;
+}
+
+function showPosterFormSection(){
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.poster-form').classList.remove('hidden')
+}
+function showMainPosterSection(){
+  document.querySelector('.main-poster').classList.remove('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+}
+function showSavedPosterSection(){
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.saved-posters').classList.remove('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
 }
