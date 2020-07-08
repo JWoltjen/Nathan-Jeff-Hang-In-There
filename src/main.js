@@ -117,6 +117,10 @@ getRandomPoster();
 // event listeners go here 👇
 document.querySelector('.show-random').addEventListener('click', getRandomPoster);
 document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
+document.querySelector('.show-main').addEventListener('click', showMainPosterSection)
+document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection)
+document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -147,4 +151,14 @@ function showPosterFormSection(){
   document.querySelector('.main-poster').classList.add('hidden')
   document.querySelector('.saved-posters').classList.add('hidden')
   document.querySelector('.poster-form').classList.remove('hidden')
+}
+function showMainPosterSection(){
+  document.querySelector('.main-poster').classList.remove('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+}
+function showSavedPosterSection(){
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.saved-posters').classList.remove('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
 }
