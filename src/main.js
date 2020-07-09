@@ -101,13 +101,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-//   )
-// ];
 var currentPoster;
 
 getRandomPoster();
@@ -117,9 +110,10 @@ getRandomPoster();
 // event listeners go here 👇
 document.querySelector('.show-random').addEventListener('click', getRandomPoster);
 document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
-document.querySelector('.show-main').addEventListener('click', showMainPosterSection)
-document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection)
-document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection)
+document.querySelector('.show-main').addEventListener('click', showMainPosterSection);
+document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
+document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
+// document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -161,4 +155,44 @@ function showSavedPosterSection(){
   document.querySelector('.main-poster').classList.add('hidden')
   document.querySelector('.saved-posters').classList.remove('hidden')
   document.querySelector('.poster-form').classList.add('hidden')
+}
+
+function makeFormPoster() {
+  // var makeNewPoster.type = "button";
+  // showMainPosterSection();
+  displayInputs();
+
+  pushTitleArray();
+}
+
+function displayInputs() {
+
+}
+
+function makeUserPosterObject() {
+  currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
+
+  return currentPoster;
+}
+
+function displayInputs() {
+  displayImageArray(images);
+  displayTitleArray(titles);
+  displayQuoteArray(quotes);
+}
+
+function displayImage() {
+  posterImage.src = document.querySelector('#poster-image-url').value;
+}
+
+function displayTitle() {
+  posterTitle.innerText = document.querySelector('#poster-title').value;
+}
+
+function displayQuote() {
+  posterQuote.innerText = document.querySelector('#poster-quote').value;
+}
+
+function pushTitleArray() {
+  titles.push(document.querySelector("#poster-title").value);
 }
