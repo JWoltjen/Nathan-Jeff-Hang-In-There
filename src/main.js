@@ -114,7 +114,7 @@ getRandomPoster();
 document.querySelector('.show-random').addEventListener('click', getRandomPoster);
 document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
 document.querySelector('.show-main').addEventListener('click', showMainPosterSection);
-document.querySelector('.save-poster').addEventListener('click', );
+document.querySelector('.save-poster').addEventListener('click', makeSavedPostersObject);
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
