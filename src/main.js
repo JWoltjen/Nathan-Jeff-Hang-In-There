@@ -113,7 +113,7 @@ document.querySelector('.show-form').addEventListener('click', showPosterFormSec
 document.querySelector('.show-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
-document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
+// document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -160,8 +160,9 @@ function showSavedPosterSection(){
 function makeFormPoster() {
   // var makeNewPoster.type = "button";
   // showMainPosterSection();
+  displayInputs();
 
-  pushInputs();
+  pushTitleArray();
 }
 
 function displayInputs() {
@@ -169,32 +170,29 @@ function displayInputs() {
 }
 
 function makeUserPosterObject() {
-  currentPoster = new Poster(
-    displayMyPoster(),
-    displayMyTitle(),
-    displayMyQuote()
-  );
+  currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
 
   return currentPoster;
 }
 
-function pushInputs() {
-  pushImageArray(images);
-  pushTitleArray(titles);
-  pushQuoteArray(quotes);
+function displayInputs() {
+  displayImageArray(images);
+  displayTitleArray(titles);
+  displayQuoteArray(quotes);
 }
 
-function pushImageArray(array) {
-  var imageUrl = document.querySelector('#poster-image-url').value;
-  console.log(imageUrl);
+function displayImage() {
+  posterImage.src = document.querySelector('#poster-image-url').value;
 }
 
-function pushTitleArray(array) {
-  var titleText = document.querySelector('#poster-title').value;
-  console.log(titleText);
+function displayTitle() {
+  posterTitle.innerText = document.querySelector('#poster-title').value;
 }
 
-function pushQuoteArray(array) {
-  var quoteText = document.querySelector('#poster-quote').value;
-  console.log(quoteText);
+function displayQuote() {
+  posterQuote.innerText = document.querySelector('#poster-quote').value;
+}
+
+function pushTitleArray() {
+  titles.push(document.querySelector("#poster-title").value);
 }
