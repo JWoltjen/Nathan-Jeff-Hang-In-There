@@ -101,6 +101,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+var savedPosters = [
+
+];
 var currentPoster;
 
 getRandomPoster();
@@ -111,6 +114,7 @@ getRandomPoster();
 document.querySelector('.show-random').addEventListener('click', getRandomPoster);
 document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
 document.querySelector('.show-main').addEventListener('click', showMainPosterSection);
+document.querySelector('.save-poster').addEventListener('click', makeSavedPostersObject);
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
@@ -120,7 +124,7 @@ document.querySelector('.make-poster').addEventListener('click', makeFormPoster)
 
 //~~~~~~~~~~~~~~~~~~RandomizePoster
 function getRandomIndex(array) {
-return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length);
 }
 
 function getRandomPoster() {
@@ -176,6 +180,13 @@ function makeUserPosterObject() {
   return currentPoster;
 }
 
+function makeSavedPostersObject() {
+  showSavedPosterSection();
+
+  currentPoster = new Poster(displaySavedImage(), displaySavedTitle(), displaySavedQuote());
+  saveToPostersArray(currentPoster);
+}
+
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
 function pushInputs(){
     pushTitleArray();
@@ -211,4 +222,24 @@ function displayTitle() {
 
 function displayQuote() {
   posterQuote.innerText = document.querySelector('#poster-quote').value;
+}
+
+function displaySavedImage() {
+  var saveImage = posterImage.src;
+  return saveImage
+}
+
+function displaySavedTitle() {
+  var saveTitle = posterTitle.innerText;
+  return saveTitle;
+}
+
+function displaySavedQuote() {
+  var saveQuote = posterQuote.innerText;
+  return saveQuote;
+}
+
+//~~~~~~~~~~~~~~~~~~~Save To Array Functions~~~~~~~~~~~~~~
+function saveToPostersArray(poster) {
+  savedPosters.push(poster)
 }
