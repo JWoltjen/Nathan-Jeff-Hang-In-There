@@ -113,7 +113,7 @@ document.querySelector('.show-form').addEventListener('click', showPosterFormSec
 document.querySelector('.show-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
-// document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
+document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -158,16 +158,13 @@ function showSavedPosterSection(){
 }
 
 function makeFormPoster() {
-  // var makeNewPoster.type = "button";
-  // showMainPosterSection();
+  document.querySelector('.make-poster').type = "button";
+  showMainPosterSection();
   displayInputs();
-
-  pushTitleArray();
+  pushInputs()
+  makeUserPosterObject()
 }
 
-function displayInputs() {
-
-}
 
 function makeUserPosterObject() {
   currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
@@ -175,10 +172,16 @@ function makeUserPosterObject() {
   return currentPoster;
 }
 
+function pushInputs(){
+    pushTitleArray();
+    pushCoverArray();
+    pushQuoteArray();
+}
+
 function displayInputs() {
-  displayImageArray(images);
-  displayTitleArray(titles);
-  displayQuoteArray(quotes);
+  displayImage(images);
+  displayTitle(titles);
+  displayQuote(quotes);
 }
 
 function displayImage() {
@@ -195,4 +198,12 @@ function displayQuote() {
 
 function pushTitleArray() {
   titles.push(document.querySelector("#poster-title").value);
+}
+
+function pushCoverArray(){
+  posterImage.src = posterImage.value
+}
+
+function pushQuoteArray(){
+  posterQuote.src = posterQuote.value
 }
