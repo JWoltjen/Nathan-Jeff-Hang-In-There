@@ -103,10 +103,6 @@ var quotes = [
 ];
 var currentPoster;
 
-getRandomPoster();
-
-
-
 // event listeners go here 👇
 document.querySelector('.show-random').addEventListener('click', getRandomPoster);
 document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
@@ -117,9 +113,11 @@ document.querySelector('.make-poster').addEventListener('click', makeFormPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+
+//~~~~~~~~~~~~~~~~~~Randomize Poster functions~~~~~~~~~~~~~~~~~~~~
+getRandomPoster();
+
+return Math.floor(Math.random() * array.length);
 
 function getRandomPoster() {
   currentPoster = new Poster(randomizePoster(), randomizeTitle(), randomizeQuote());
@@ -140,6 +138,7 @@ function randomizeQuote() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   return posterQuote.innerText;
 }
+//~~~~~~~~~~~~~~~~~~~~~Navigation Functions~~~~~~~~~~~~~~~~~~~~~
 
 function showPosterFormSection(){
   document.querySelector('.main-poster').classList.add('hidden')
@@ -157,6 +156,7 @@ function showSavedPosterSection(){
   document.querySelector('.poster-form').classList.add('hidden')
 }
 
+//~~~~~~~~~~~~~~~~~~Custom Poster Functions~~~~~~~~~~~~~~~~~~~~~~
 function makeFormPoster() {
   document.querySelector('.make-poster').type = "button";
   showMainPosterSection();
@@ -165,19 +165,31 @@ function makeFormPoster() {
   makeUserPosterObject()
 }
 
-
 function makeUserPosterObject() {
   currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
 
   return currentPoster;
 }
 
+//~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
 function pushInputs(){
     pushTitleArray();
     pushCoverArray();
     pushQuoteArray();
 }
+function pushTitleArray() {
+  titles.push(document.querySelector("#poster-title").value);
+}
 
+function pushCoverArray(){
+  posterImage.src = posterImage.value
+}
+
+function pushQuoteArray(){
+  posterQuote.src = posterQuote.value
+}
+
+//~~~~~~~~~~~~~~~~~~~Display Input Functions~~~~~~~~~~~~~~
 function displayInputs() {
   displayImage(images);
   displayTitle(titles);
@@ -194,16 +206,4 @@ function displayTitle() {
 
 function displayQuote() {
   posterQuote.innerText = document.querySelector('#poster-quote').value;
-}
-
-function pushTitleArray() {
-  titles.push(document.querySelector("#poster-title").value);
-}
-
-function pushCoverArray(){
-  posterImage.src = posterImage.value
-}
-
-function pushQuoteArray(){
-  posterQuote.src = posterQuote.value
 }
