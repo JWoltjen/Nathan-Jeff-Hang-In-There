@@ -158,16 +158,10 @@ function showSavedPosterSection(){
 }
 
 function makeFormPoster() {
-  showMainPosterSection();
+  // var makeNewPoster.type = "button";
+  // showMainPosterSection();
 
-  // save the submitted data into respective arrays
-  // img url string
-  // title string
-  // quote string
-}
-
-function pushInputs() {
-
+  pushInputs();
 }
 
 function displayInputs() {
@@ -184,15 +178,23 @@ function makeUserPosterObject() {
   return currentPoster;
 }
 
+function pushInputs() {
+  pushImageArray(images);
+  pushTitleArray(titles);
+  pushQuoteArray(quotes);
+}
+
 function pushImageArray(array) {
   var imageUrl = document.querySelector('#poster-image-url').value;
-  array.push(imageUrl);
+  console.log(imageUrl);
 }
 
-function pushTitleArray() {
-
+function pushTitleArray(array) {
+  var titleText = document.querySelector('#poster-title').value;
+  console.log(titleText);
 }
 
-function pushQuoteArray() {
-
+function pushQuoteArray(array) {
+  var quoteText = document.querySelector('#poster-quote').value;
+  console.log(quoteText);
 }
