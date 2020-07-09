@@ -183,7 +183,8 @@ function makeUserPosterObject() {
 function makeSavedPostersObject() {
   showSavedPosterSection();
 
-  currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
+  currentPoster = new Poster(displaySavedImage(), displaySavedTitle(), displaySavedQuote());
+  saveToPostersArray(currentPoster);
 }
 
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
@@ -224,10 +225,21 @@ function displayQuote() {
 }
 
 function displaySavedImage() {
-  var saveImage = document.querySelector('.poster-img').src;
+  var saveImage = posterImage.src;
+  return saveImage
+}
+
+function displaySavedTitle() {
+  var saveTitle = posterTitle.innerText;
+  return saveTitle;
+}
+
+function displaySavedQuote() {
+  var saveQuote = posterQuote.innerText;
+  return saveQuote;
 }
 
 //~~~~~~~~~~~~~~~~~~~Save To Array Functions~~~~~~~~~~~~~~
-function saveToPostersArray() {
-  savedPosters.push(makeUserPosterObject)
+function saveToPostersArray(poster) {
+  savedPosters.push(poster)
 }
