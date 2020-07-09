@@ -101,6 +101,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+var savedPosters = [
+
+];
 var currentPoster;
 
 getRandomPoster();
@@ -120,7 +123,7 @@ document.querySelector('.make-poster').addEventListener('click', makeFormPoster)
 
 //~~~~~~~~~~~~~~~~~~RandomizePoster
 function getRandomIndex(array) {
-return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length);
 }
 
 function getRandomPoster() {
