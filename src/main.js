@@ -113,12 +113,14 @@ document.querySelector('.show-form').addEventListener('click', showPosterFormSec
 document.querySelector('.show-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
-// document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
+document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+//~~~~~~~~~~~~~~~~~~RandomizePoster
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+return Math.floor(Math.random() * array.length);
 }
 
 function getRandomPoster() {
@@ -141,6 +143,8 @@ function randomizeQuote() {
   return posterQuote.innerText;
 }
 
+//~~~~~~~~~~~~~~~~~~~~~Navigation Functions~~~~~~~~~~~~~~~~~~~~~
+
 function showPosterFormSection(){
   document.querySelector('.main-poster').classList.add('hidden')
   document.querySelector('.saved-posters').classList.add('hidden')
@@ -157,16 +161,13 @@ function showSavedPosterSection(){
   document.querySelector('.poster-form').classList.add('hidden')
 }
 
+//~~~~~~~~~~~~~~~~~~Custom Poster Functions~~~~~~~~~~~~~~~~~~~~~~
 function makeFormPoster() {
-  // var makeNewPoster.type = "button";
-  // showMainPosterSection();
+  document.querySelector('.make-poster').type = "button";
+  showMainPosterSection();
   displayInputs();
-
-  pushTitleArray();
-}
-
-function displayInputs() {
-
+  pushInputs()
+  makeUserPosterObject()
 }
 
 function makeUserPosterObject() {
@@ -175,10 +176,29 @@ function makeUserPosterObject() {
   return currentPoster;
 }
 
+//~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
+function pushInputs(){
+    pushTitleArray();
+    pushImageArray();
+    pushQuoteArray();
+}
+function pushTitleArray() {
+  titles.push(document.querySelector("#poster-title").value);
+}
+
+function pushImageArray(){
+  images.push(document.querySelector("#poster-image-url").value);
+}
+
+function pushQuoteArray(){
+  quotes.push(document.querySelector("#poster-quote").value)
+}
+
+//~~~~~~~~~~~~~~~~~~~Display Input Functions~~~~~~~~~~~~~~
 function displayInputs() {
-  displayImageArray(images);
-  displayTitleArray(titles);
-  displayQuoteArray(quotes);
+  displayImage();
+  displayTitle();
+  displayQuote();
 }
 
 function displayImage() {
@@ -191,8 +211,4 @@ function displayTitle() {
 
 function displayQuote() {
   posterQuote.innerText = document.querySelector('#poster-quote').value;
-}
-
-function pushTitleArray() {
-  titles.push(document.querySelector("#poster-title").value);
 }
