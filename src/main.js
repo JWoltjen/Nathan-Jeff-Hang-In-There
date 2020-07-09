@@ -103,6 +103,10 @@ var quotes = [
 ];
 var currentPoster;
 
+getRandomPoster();
+
+
+
 // event listeners go here 👇
 document.querySelector('.show-random').addEventListener('click', getRandomPoster);
 document.querySelector('.show-form').addEventListener('click', showPosterFormSection);
@@ -114,10 +118,10 @@ document.querySelector('.make-poster').addEventListener('click', makeFormPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-//~~~~~~~~~~~~~~~~~~Randomize Poster functions~~~~~~~~~~~~~~~~~~~~
-getRandomPoster();
-
+//~~~~~~~~~~~~~~~~~~RandomizePoster
+function getRandomIndex(array) {
 return Math.floor(Math.random() * array.length);
+}
 
 function getRandomPoster() {
   currentPoster = new Poster(randomizePoster(), randomizeTitle(), randomizeQuote());
@@ -138,6 +142,7 @@ function randomizeQuote() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   return posterQuote.innerText;
 }
+
 //~~~~~~~~~~~~~~~~~~~~~Navigation Functions~~~~~~~~~~~~~~~~~~~~~
 
 function showPosterFormSection(){
@@ -174,26 +179,26 @@ function makeUserPosterObject() {
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
 function pushInputs(){
     pushTitleArray();
-    pushCoverArray();
+    pushImageArray();
     pushQuoteArray();
 }
 function pushTitleArray() {
   titles.push(document.querySelector("#poster-title").value);
 }
 
-function pushCoverArray(){
-  posterImage.src = posterImage.value
+function pushImageArray(){
+  images.push(document.querySelector("#poster-image-url").value);
 }
 
 function pushQuoteArray(){
-  posterQuote.src = posterQuote.value
+  quotes.push(document.querySelector("#poster-quote").value)
 }
 
 //~~~~~~~~~~~~~~~~~~~Display Input Functions~~~~~~~~~~~~~~
 function displayInputs() {
-  displayImage(images);
-  displayTitle(titles);
-  displayQuote(quotes);
+  displayImage();
+  displayTitle();
+  displayQuote();
 }
 
 function displayImage() {
