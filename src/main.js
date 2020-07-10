@@ -184,7 +184,7 @@ function makeSavedPostersObject() {
   showSavedPosterSection();
 
   currentPoster = new Poster(displaySavedImage(), displaySavedTitle(), displaySavedQuote());
-  saveToPostersArray(currentPoster);
+  checkForDuplicates(currentPoster)
 }
 
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
@@ -242,4 +242,18 @@ function displaySavedQuote() {
 //~~~~~~~~~~~~~~~~~~~Save To Array Functions~~~~~~~~~~~~~~
 function saveToPostersArray(poster) {
   savedPosters.push(poster)
+}
+function checkForDuplicates(poster){
+  for (var i = 0; i<savedPosters.length; i++){
+  if (poster !== savedPosters[i]){
+    displaySavedPosters();
+    savedPosters.push(poster)
+  }
+  }
+}
+
+var toBePrinted = document.querySelector('.saved-posters-grid');
+
+function displaySavedPosters(){
+  savedCoversDisplay.appendChild()
 }
