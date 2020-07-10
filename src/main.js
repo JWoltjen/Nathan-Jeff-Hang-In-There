@@ -182,9 +182,9 @@ function makeUserPosterObject() {
 
 function makeSavedPostersObject() {
   showSavedPosterSection();
-
   currentPoster = new Poster(displaySavedImage(), displaySavedTitle(), displaySavedQuote());
   checkForDuplicates(currentPoster)
+  displaySavedPosters()
 }
 
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
@@ -244,21 +244,24 @@ function saveToPostersArray(poster) {
   savedPosters.push(poster)
 }
 function checkForDuplicates(poster){
+  if (savedPosters.length !== 0){
   for (var i = 0; i<savedPosters.length; i++){
   if (poster !== savedPosters[i]){
     displaySavedPosters();
     savedPosters.push(poster)
-  }
+        }
+      }
+    } else{ savedPosters.push(poster)
   }
 }
 
-var toBePrinted = document.querySelector('.saved-posters-grid');
-toBePrinted.innerHtml = `
-<img src = "${saveImage}">
-<h2> ${saveTitle} </h2>
-<h4> ${saveQuote} </h4>
-`;
-
 function displaySavedPosters(){
-  savedPosters
+
+  var toBePrinted = document.querySelector('.saved-posters-grid');
+  toBePrinted.innerHtml = `
+  <img src = "${posterImage.src}">
+  <h2> ${posterTitle.innerText} </h2>
+  <h4> ${posterQuote.innerText} </h4>
+  `;
+  toBePrinted.insertAdjacentHTML('afterBegin', toBePrinted)
 }
