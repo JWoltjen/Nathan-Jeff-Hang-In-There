@@ -184,7 +184,7 @@ function makeSavedPostersObject() {
   showSavedPosterSection();
   currentPoster = new Poster(displaySavedImage(), displaySavedTitle(), displaySavedQuote());
   checkForDuplicates(currentPoster)
-  displaySavedPosters()
+  displaySavedPosters(currentPoster)
 }
 
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
@@ -255,13 +255,15 @@ function checkForDuplicates(poster){
   }
 }
 
-function displaySavedPosters(){
+function displaySavedPosters(poster){
 
   var toBePrinted = document.querySelector('.saved-posters-grid');
-  toBePrinted.innerHtml = `
-  <img src = "${posterImage.src}">
-  <h2> ${posterTitle.innerText} </h2>
-  <h4> ${posterQuote.innerText} </h4>
-  `;
-  toBePrinted.insertAdjacentHTML('afterBegin', toBePrinted)
+  var div = document.createElement('div')
+
+  div.innerHTML = `
+  <img class = 'mini-poster' src = "${poster.imageURL}" >
+  <h2 class = 'mini-poster'> ${poster.title.toUpperCase()} </h2>
+  <h4 class = 'mini-poster'> ${poster.quote} </h4>
+`;
+  toBePrinted.appendChild(div)
 }
