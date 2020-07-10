@@ -182,9 +182,9 @@ function makeUserPosterObject() {
 
 function makeSavedPostersObject() {
   showSavedPosterSection();
-
   currentPoster = new Poster(displaySavedImage(), displaySavedTitle(), displaySavedQuote());
-  saveToPostersArray(currentPoster);
+  checkForDuplicates(currentPoster)
+  displaySavedPosters(currentPoster)
 }
 
 //~~~~~~~~~~~~~~~~~Push Input Functions~~~~~~~~~~~~~~~~~~~~~
@@ -242,4 +242,29 @@ function displaySavedQuote() {
 //~~~~~~~~~~~~~~~~~~~Save To Array Functions~~~~~~~~~~~~~~
 function saveToPostersArray(poster) {
   savedPosters.push(poster)
+}
+function checkForDuplicates(poster){
+  if (savedPosters.length !== 0){
+  for (var i = 0; i<savedPosters.length; i++){
+  if (poster !== savedPosters[i]){
+    displaySavedPosters();
+    savedPosters.push(poster)
+        }
+      }
+    } else{ savedPosters.push(poster)
+  }
+}
+
+function displaySavedPosters(poster){
+
+  var toBePrinted = document.querySelector('.saved-posters-grid');
+  var div = document.createElement('div')
+  div.classList.add('mini-poster')
+
+  div.innerHTML = `
+  <img src = "${poster.imageURL}" >
+  <h2> ${poster.title.toUpperCase()} </h2>
+  <h4> ${poster.quote} </h4>
+`;
+  toBePrinted.appendChild(div)
 }
