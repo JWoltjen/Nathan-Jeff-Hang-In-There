@@ -259,11 +259,12 @@ function displaySavedPosters(poster){
 
   var toBePrinted = document.querySelector('.saved-posters-grid');
   var div = document.createElement('div')
+  div.classList.add('mini-poster')
 
   div.innerHTML = `
-  <img class = 'mini-poster' src = "${poster.imageURL}" >
-  <h2 class = 'mini-poster'> ${poster.title.toUpperCase()} </h2>
-  <h4 class = 'mini-poster'> ${poster.quote} </h4>
+  <img src = "${poster.imageURL}" >
+  <h2> ${poster.title.toUpperCase()} </h2>
+  <h4> ${poster.quote} </h4>
 `;
   toBePrinted.appendChild(div)
 }
