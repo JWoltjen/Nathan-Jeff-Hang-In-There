@@ -253,7 +253,12 @@ function checkForDuplicates(poster){
 }
 
 var toBePrinted = document.querySelector('.saved-posters-grid');
+toBePrinted.innerHtml = `
+<img src = "${saveImage}">
+<h2> ${saveTitle} </h2>
+<h4> ${saveQuote} </h4>
+`;
 
 function displaySavedPosters(){
-  savedCoversDisplay.appendChild()
+  savedPosters
 }
