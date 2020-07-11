@@ -284,3 +284,5 @@ function eraseThis(event){
   var target = event.target.parentNode
   savedPostersSection.removeChild(target)
 }
+
+//~~~~~~~~~~~~Modal Functions~~~~~~~~~~~~~~~~~~~~~~~~~//

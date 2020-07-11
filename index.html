@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,15 @@
   <link rel="stylesheet" href="styles.css">
   <title>Hang In There</title>
 </head>
+
 <body>
-  <section class="main-poster">
+  <section class="main-poster hidden">
+    <article class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-img" src="" alt="nothin' to see here">
+      <h1 class="modal-title">Title</h1>
+      <h3 class="modal-quote">Quote</h3>
+    </article>
     <article class="poster">
       <img class="poster-img" src="" alt="nothin' to see here">
       <h1 class="poster-title">Title</h1>
@@ -27,7 +35,7 @@
       <label for="poster-title">Motivational title</label>
       <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset">
       <label for="poster-quote">Motivational quote</label>
-        <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
+      <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
       <button class="make-poster">Show my poster</button>
     </form>
     <div class="divider"></div>
@@ -41,4 +49,5 @@
   <script src="./src/poster.js"></script>
   <script src="./src/main.js"></script>
 </body>
+
 </html>
