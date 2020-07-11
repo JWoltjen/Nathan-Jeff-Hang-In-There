@@ -244,27 +244,36 @@ function saveToPostersArray(poster) {
   savedPosters.push(poster)
 }
 function checkForDuplicates(poster){
-  if (savedPosters.length !== 0){
-  for (var i = 0; i<savedPosters.length; i++){
-  if (poster !== savedPosters[i]){
-    displaySavedPosters();
-    savedPosters.push(poster)
-        }
+  if (savedPosters.length !== 0) {
+    for (var i = 0; i < savedPosters.length; i++){
+      if (poster.src === savedPosters[i].src && poster.title === savedPosters[i].title && poster.quote === savedPosters[i].quote) {
+        return savedPosters;
       }
-    } else{ savedPosters.push(poster)
+    }
+    savedPosters.push(poster);
+  } else {
+    savedPosters.push(poster)
   }
+  displaySavedPosters();
 }
 
-function displaySavedPosters(poster){
+function displaySavedPosters(){
 
   var toBePrinted = document.querySelector('.saved-posters-grid');
-  var div = document.createElement('div')
-  div.classList.add('mini-poster')
 
-  div.innerHTML = `
-  <img src = "${poster.imageURL}" >
-  <h2> ${poster.title.toUpperCase()} </h2>
-  <h4> ${poster.quote} </h4>
-`;
-  toBePrinted.appendChild(div)
+  if (toBePrinted.hasChildNodes()) {
+    toBePrinted.innerHTML = '';
+  }
+
+  for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters.length !== 0) {
+        toBePrinted.insertAdjacentHTML('afterbegin', `
+          <article class="mini-poster">
+            <img src = "${savedPosters[i].imageURL}" >
+            <h2> ${savedPosters[i].title.toUpperCase()} </h2>
+            <h4> ${savedPosters[i].quote} </h4>
+          </article>
+        `);
+      }
+  }
 }
