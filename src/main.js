@@ -118,7 +118,7 @@ document.querySelector('.save-poster').addEventListener('click', makeSavedPoster
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
-document.querySelector('.saved-posters-grid').addEventListener('click', eraseThis)
+document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
