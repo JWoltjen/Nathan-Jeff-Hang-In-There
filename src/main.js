@@ -244,17 +244,17 @@ function saveToPostersArray(poster) {
   savedPosters.push(poster)
 }
 function checkForDuplicates(poster){
-  if (savedPosters.length !== 0){
-    for (var i = 0; i<savedPosters.length; i++){
-      if (poster.src === savedPosters[i].src && poster.title === savedPosters[i].title && poster.quote === savedPosters[i].quote){
-        displaySavedPosters();
-      } else {
-        savedPosters.push(poster)
+  if (savedPosters.length !== 0) {
+    for (var i = 0; i < savedPosters.length; i++){
+      if (poster.src === savedPosters[i].src && poster.title === savedPosters[i].title && poster.quote === savedPosters[i].quote) {
+        return savedPosters;
       }
-      }
-    } else {
-      savedPosters.push(poster)
+    }
+    savedPosters.push(poster);
+  } else {
+    savedPosters.push(poster)
   }
+  displaySavedPosters();
 }
 
 function displaySavedPosters(){
