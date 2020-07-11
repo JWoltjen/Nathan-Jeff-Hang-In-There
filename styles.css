@@ -170,4 +170,5 @@ button:hover {
   float: right;
   color: red;
   font-size: 40px;
+  cursor: pointer;
 }

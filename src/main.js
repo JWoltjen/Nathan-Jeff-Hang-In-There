@@ -120,6 +120,7 @@ document.querySelector('.show-saved').addEventListener('click',showSavedPosterSe
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis)
 document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
+document.querySelector('.close').addEventListener('click', closeModal)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -292,4 +293,8 @@ function displayModal(event) {
   document.querySelector('.modal').classList.remove('hidden');
   console.log(event);
   document.querySelector('.modal-img').src = event.srcElement.currentSrc;
+}
+
+function closeModal() {
+  document.querySelector('.modal').classList.add('hidden');
 }
