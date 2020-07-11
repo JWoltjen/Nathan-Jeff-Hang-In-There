@@ -118,6 +118,7 @@ document.querySelector('.save-poster').addEventListener('click', makeSavedPoster
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
+document.querySelector('.saved-posters-grid').addEventListener('click', eraseThis)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -164,6 +165,7 @@ function showSavedPosterSection(){
   document.querySelector('.saved-posters').classList.remove('hidden')
   document.querySelector('.poster-form').classList.add('hidden')
 }
+var savedPostersSection = document.querySelector('.saved-posters-grid')
 
 //~~~~~~~~~~~~~~~~~~Custom Poster Functions~~~~~~~~~~~~~~~~~~~~~~
 function makeFormPoster() {
@@ -276,4 +278,9 @@ function displaySavedPosters(){
         `);
       }
   }
+}
+//~~~~~~~~~~~~Erase Saved Element Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
+function eraseThis(event){
+  var target = event.target.parentNode
+  savedPostersSection.removeChild(target)
 }
