@@ -288,7 +288,13 @@ function eraseThis(event){
     target = event.target
   }
   savedPostersSection.removeChild(target)
-  
+  for (var i = 0; i<savedPosters.length; i++){
+    if (savedPosters[i].id == target.getAttribute("id")){
+      console.log(savedPosters[i].id)
+      console.log(target.getAttribute("id"))
+      savedPosters.splice(i,1)
+    }
+  }
 }
 
 //~~~~~~~~~~~~Modal Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
