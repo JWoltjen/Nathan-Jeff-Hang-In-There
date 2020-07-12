@@ -30,7 +30,7 @@ button:hover {
 }
 
 .hidden {
-  display: none!important;
+  display: none !important;
 }
 
 /* ~~~~~ MAIN POSTER SECTION ~~~~~ */
@@ -126,7 +126,7 @@ button:hover {
 }
 
 .mini-poster img {
-  height:200px;
+  height: 200px;
   width: 300px;
 }
 
@@ -144,4 +144,30 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* Modal */
+.modal {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: auto;
+  background-color: black;
+  color: white;
+  padding: 25px;
+  z-index: 100;
+}
+
+.modal img {
+  width: 80%;
+  height: auto;
+}
+
+.close {
+  margin-top: -20px;
+  float: right;
+  color: red;
+  font-size: 40px;
+  cursor: pointer;
 }
