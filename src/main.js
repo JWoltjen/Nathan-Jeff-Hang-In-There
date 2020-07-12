@@ -286,6 +286,8 @@ function displaySavedPosters(){
           </article>
         `)
       }
+      document.querySelector('.mini-poster-title').addEventListener('focusout', modifyObjectTitleAndQuote);
+      document.querySelector('.mini-poster-quote').addEventListener('focusout', modifyObjectTitleAndQuote);
       document.querySelector('.mini-poster-title').addEventListener('click', editPosterTitleAndQuote)
       document.querySelector('.mini-poster-quote').addEventListener('click', editPosterTitleAndQuote)
   }
@@ -323,4 +325,19 @@ function closeModal() {
 //~~~~~~~~~~~~~~~~~~Select Single Input~~~~~~~~~~~~~~~~~~~~~//
 function editPosterTitleAndQuote(event){
   event.target.setAttribute('contenteditable', true)
+  console.log(event.target.parentNode.getAttribute('id'))
+}
+
+function modifyObjectTitleAndQuote(event){
+  var target = event.target.parentNode;
+  for (var i = 0; i<savedPosters.length; i++){
+    if (savedPosters[i].id == target.getAttribute("id")){
+      console.log(savedPosters[i].id)
+      console.log(savedPosters[i].title)
+      console.log(target)
+      console.log(target.getAttribute("id"))
+      savedPosters[i].title = document.querySelector('.mini-poster-title').innerText;
+      savedPosters[i].quote = document.querySelector('.mini-poster-quote').innerText;
+    }
+  }
 }
