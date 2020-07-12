@@ -165,8 +165,7 @@ button:hover {
 }
 
 .close {
-  top: 10px;
-  right: 20px;
+  margin-top: -20px;
   float: right;
   color: red;
   font-size: 40px;

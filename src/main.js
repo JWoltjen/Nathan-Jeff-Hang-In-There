@@ -119,7 +119,7 @@ document.querySelector('.back-to-main').addEventListener('click', showMainPoster
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis)
-document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
+// document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
 document.querySelector('.close').addEventListener('click', closeModal)
 
 // functions and event handlers go here 👇
@@ -288,12 +288,14 @@ function eraseThis(event){
 }
 
 //~~~~~~~~~~~~Modal Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
-function displayModal(event) {
-  var target = event.target.parentNode;
-  document.querySelector('.modal').classList.remove('hidden');
-  console.log(event);
-  document.querySelector('.modal-img').src = event.srcElement.currentSrc;
-}
+// function displayModal(event) {
+//   console.log(event.target)
+//   var target = event.target.parentNode;
+//   document.querySelector('.modal').classList.remove('hidden');
+//   document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
+//   document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
+//   document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
+// }
 
 function closeModal() {
   document.querySelector('.modal').classList.add('hidden');
