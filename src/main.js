@@ -105,7 +105,7 @@ var savedPosters = [
 
 ];
 var currentPoster;
-
+var clickCount = 0;
 getRandomPoster();
 
 
@@ -119,7 +119,7 @@ document.querySelector('.back-to-main').addEventListener('click', showMainPoster
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis);
-//document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
+document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
 document.querySelector('.close').addEventListener('click', closeModal);
 
 // functions and event handlers go here 👇
@@ -271,15 +271,11 @@ function checkForDuplicates(poster){
 }
 
 function displaySavedPosters(){
-
   var toBePrinted = document.querySelector('.saved-posters-grid');
-
   if (toBePrinted.hasChildNodes()) {
     toBePrinted.innerHTML = '';
   }
-
   for (var i = 0; i < savedPosters.length; i++) {
-
       if (savedPosters.length !== 0) {
         toBePrinted.insertAdjacentHTML('afterbegin', `
           <article id="${savedPosters[i].id}" class="mini-poster">
@@ -305,24 +301,31 @@ function eraseThis(event){
   savedPostersSection.removeChild(target)
   for (var i = 0; i<savedPosters.length; i++){
     if (savedPosters[i].id == target.getAttribute("id")){
-      console.log(savedPosters[i].id)
-      console.log(target.getAttribute("id"))
       savedPosters.splice(i,1)
     }
   }
 }
 
 //~~~~~~~~~~~~Modal Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
-/*
+
 function displayModal(event) {
-   console.log(event.target)
   var target = event.target.parentNode;
-  document.querySelector('.modal').classList.remove('hidden');
-   document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
-   document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
-   document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
- }
-*/
+  clickCount++
+  if (clickCount === 1){
+    singleClickTimer = setTimeout(function(){
+      console.log("hello")
+      clickCount = 0
+      document.querySelector('.modal').classList.remove('hidden');
+      document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
+      document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
+      document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
+    },200)
+  } else if (clickCount === 2){
+    clearTimeout(singleClickTimer)
+    clickCount = 0
+  }
+}
+
 function closeModal() {
   document.querySelector('.modal').classList.add('hidden');
 }
