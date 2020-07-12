@@ -173,6 +173,9 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 function makeFormPoster() {
   document.querySelector('.make-poster').type = "button";
   verifyForm()
+  if (verifyForm() === false){
+    return alert("Please fill all three forms before submitting new poster")
+  }
   showMainPosterSection();
   displayInputs();
   pushInputs()
@@ -186,7 +189,7 @@ function makeUserPosterObject() {
 }
 function verifyForm(){
   if (document.querySelector('#poster-image-url').value === '' || document.querySelector('#poster-title').value == '' || document.querySelector('#poster-quote').value === ''){
-    alert("Please fill all three forms before submitting new poster")
+    return false
   }
 }
 
@@ -286,6 +289,7 @@ function displaySavedPosters(){
           </article>
         `)
       }
+      document.querySelector('.modal-img').addEventListener('click', modifyImage)
       document.querySelector('.mini-poster-title').addEventListener('focusout', modifyObjectTitleAndQuote);
       document.querySelector('.mini-poster-quote').addEventListener('focusout', modifyObjectTitleAndQuote);
       document.querySelector('.mini-poster-title').addEventListener('click', editPosterTitleAndQuote)
@@ -322,7 +326,7 @@ function displayModal(event) {
 function closeModal() {
   document.querySelector('.modal').classList.add('hidden');
 }
-//~~~~~~~~~~~~~~~~~~Select Single Input~~~~~~~~~~~~~~~~~~~~~//
+//~~~~~~~~~~~~~~~~~~Select Single Input to Edit~~~~~~~~~~~~~~~~~~~~~//
 function editPosterTitleAndQuote(event){
   event.target.setAttribute('contenteditable', true)
   console.log(event.target.parentNode.getAttribute('id'))
@@ -338,6 +342,15 @@ function modifyObjectTitleAndQuote(event){
       console.log(target.getAttribute("id"))
       savedPosters[i].title = document.querySelector('.mini-poster-title').innerText;
       savedPosters[i].quote = document.querySelector('.mini-poster-quote').innerText;
+    }
+  }
+}
+function modifyImage(event){
+  var target = event.target.parentNode;
+
+  for (var i = 0; i<savedPosters.length; i++){
+    if (savedPosters[i].id === target.getAttribute("id")){
+      savedPosters[i].imageURL = document.querySelector('.mini-poster-image').src
     }
   }
 }
