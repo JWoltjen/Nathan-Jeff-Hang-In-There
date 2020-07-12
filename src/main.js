@@ -119,7 +119,7 @@ document.querySelector('.back-to-main').addEventListener('click', showMainPoster
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
 document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis)
-// document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
+//document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
 document.querySelector('.close').addEventListener('click', closeModal)
 
 // functions and event handlers go here 👇
@@ -272,31 +272,36 @@ function displaySavedPosters(){
   for (var i = 0; i < savedPosters.length; i++) {
       if (savedPosters.length !== 0) {
         toBePrinted.insertAdjacentHTML('afterbegin', `
-          <article class="mini-poster">
+          <article id="${savedPosters[i].id}" class="mini-poster">
             <img src = "${savedPosters[i].imageURL}" >
             <h2> ${savedPosters[i].title.toUpperCase()} </h2>
             <h4> ${savedPosters[i].quote} </h4>
           </article>
-        `);
+        `)
       }
   }
 }
 //~~~~~~~~~~~~Erase Saved Element Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
 function eraseThis(event){
   var target = event.target.parentNode
+  if (target.classList.contains("saved-posters-grid")){
+    target = event.target
+  }
   savedPostersSection.removeChild(target)
+  
 }
 
 //~~~~~~~~~~~~Modal Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
-// function displayModal(event) {
-//   console.log(event.target)
-//   var target = event.target.parentNode;
-//   document.querySelector('.modal').classList.remove('hidden');
-//   document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
-//   document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
-//   document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
-// }
-
+/*
+function displayModal(event) {
+   console.log(event.target)
+  var target = event.target.parentNode;
+  document.querySelector('.modal').classList.remove('hidden');
+   document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
+   document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
+   document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
+ }
+*/
 function closeModal() {
   document.querySelector('.modal').classList.add('hidden');
 }
