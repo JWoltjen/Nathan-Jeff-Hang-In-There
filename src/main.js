@@ -121,9 +121,7 @@ document.querySelector('.make-poster').addEventListener('click', makeFormPoster)
 document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis);
 //document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
 document.querySelector('.close').addEventListener('click', closeModal);
-// document.querySelector('#poster-image-url').addEventListener('click', verifyForm);
-// document.querySelector('#poster-title').addEventListener('focusout', verifyForm);
-// document.querySelector('#poster-quote').addEventListener('focusout', verifyForm)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -278,15 +276,18 @@ function displaySavedPosters(){
   }
 
   for (var i = 0; i < savedPosters.length; i++) {
+
       if (savedPosters.length !== 0) {
         toBePrinted.insertAdjacentHTML('afterbegin', `
           <article id="${savedPosters[i].id}" class="mini-poster">
-            <img src = "${savedPosters[i].imageURL}" >
-            <h2> ${savedPosters[i].title.toUpperCase()} </h2>
-            <h4> ${savedPosters[i].quote} </h4>
+            <img src = "${savedPosters[i].imageURL}" class="mini-poster-image" >
+            <h2 class='mini-poster-title'> ${savedPosters[i].title.toUpperCase()} </h2>
+            <h4 class='mini-poster-quote'> ${savedPosters[i].quote} </h4>
           </article>
         `)
       }
+      document.querySelector('.mini-poster-title').addEventListener('click', editPosterTitleAndQuote)
+      document.querySelector('.mini-poster-quote').addEventListener('click', editPosterTitleAndQuote)
   }
 }
 //~~~~~~~~~~~~Erase Saved Element Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -318,4 +319,8 @@ function displayModal(event) {
 */
 function closeModal() {
   document.querySelector('.modal').classList.add('hidden');
+}
+//~~~~~~~~~~~~~~~~~~Select Single Input~~~~~~~~~~~~~~~~~~~~~//
+function editPosterTitleAndQuote(event){
+  event.target.setAttribute('contenteditable', true)
 }
