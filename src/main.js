@@ -118,10 +118,12 @@ document.querySelector('.save-poster').addEventListener('click', makeSavedPoster
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
-document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis)
+document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis);
 //document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
-document.querySelector('.close').addEventListener('click', closeModal)
-
+document.querySelector('.close').addEventListener('click', closeModal);
+// document.querySelector('#poster-image-url').addEventListener('click', verifyForm);
+// document.querySelector('#poster-title').addEventListener('focusout', verifyForm);
+// document.querySelector('#poster-quote').addEventListener('focusout', verifyForm)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -172,6 +174,7 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 //~~~~~~~~~~~~~~~~~~Custom Poster Functions~~~~~~~~~~~~~~~~~~~~~~
 function makeFormPoster() {
   document.querySelector('.make-poster').type = "button";
+  verifyForm()
   showMainPosterSection();
   displayInputs();
   pushInputs()
@@ -182,6 +185,11 @@ function makeUserPosterObject() {
   currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
 
   return currentPoster;
+}
+function verifyForm(){
+  if (document.querySelector('#poster-image-url').value === '' || document.querySelector('#poster-title').value == '' || document.querySelector('#poster-quote').value === ''){
+    alert("Please fill all three forms before submitting new poster")
+  }
 }
 
 function makeSavedPostersObject() {
