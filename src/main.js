@@ -105,7 +105,7 @@ var savedPosters = [
 
 ];
 var currentPoster;
-
+var clickCount = 0;
 getRandomPoster();
 
 
@@ -118,9 +118,9 @@ document.querySelector('.save-poster').addEventListener('click', makeSavedPoster
 document.querySelector('.back-to-main').addEventListener('click', showMainPosterSection);
 document.querySelector('.show-saved').addEventListener('click',showSavedPosterSection);
 document.querySelector('.make-poster').addEventListener('click', makeFormPoster);
-document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis)
-// document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
-document.querySelector('.close').addEventListener('click', closeModal)
+document.querySelector('.saved-posters-grid').addEventListener('dblclick', eraseThis);
+document.querySelector('.saved-posters-grid').addEventListener('click', displayModal)
+document.querySelector('.close').addEventListener('click', closeModal);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -172,6 +172,10 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 //~~~~~~~~~~~~~~~~~~Custom Poster Functions~~~~~~~~~~~~~~~~~~~~~~
 function makeFormPoster() {
   document.querySelector('.make-poster').type = "button";
+  verifyForm()
+  if (verifyForm() === false){
+    return alert("Please fill all three forms before submitting new poster")
+  }
   showMainPosterSection();
   displayInputs();
   pushInputs()
@@ -182,6 +186,11 @@ function makeUserPosterObject() {
   currentPoster = new Poster(displayImage(), displayTitle(), displayQuote());
 
   return currentPoster;
+}
+function verifyForm(){
+  if (document.querySelector('#poster-image-url').value === '' || document.querySelector('#poster-title').value == '' || document.querySelector('#poster-quote').value === ''){
+    return false
+  }
 }
 
 function makeSavedPostersObject() {
@@ -262,41 +271,89 @@ function checkForDuplicates(poster){
 }
 
 function displaySavedPosters(){
-
   var toBePrinted = document.querySelector('.saved-posters-grid');
-
   if (toBePrinted.hasChildNodes()) {
     toBePrinted.innerHTML = '';
   }
-
   for (var i = 0; i < savedPosters.length; i++) {
       if (savedPosters.length !== 0) {
         toBePrinted.insertAdjacentHTML('afterbegin', `
-          <article class="mini-poster">
-            <img src = "${savedPosters[i].imageURL}" >
-            <h2> ${savedPosters[i].title.toUpperCase()} </h2>
-            <h4> ${savedPosters[i].quote} </h4>
+          <article id="${savedPosters[i].id}" class="mini-poster">
+            <img src = "${savedPosters[i].imageURL}" class="mini-poster-image" >
+            <h2 class='mini-poster-title'> ${savedPosters[i].title.toUpperCase()} </h2>
+            <h4 class='mini-poster-quote'> ${savedPosters[i].quote} </h4>
           </article>
-        `);
+        `)
       }
+      document.querySelector('.modal-img').addEventListener('click', modifyImage)
+      document.querySelector('.mini-poster-title').addEventListener('focusout', modifyObjectTitleAndQuote);
+      document.querySelector('.mini-poster-quote').addEventListener('focusout', modifyObjectTitleAndQuote);
+      document.querySelector('.mini-poster-title').addEventListener('click', editPosterTitleAndQuote)
+      document.querySelector('.mini-poster-quote').addEventListener('click', editPosterTitleAndQuote)
   }
 }
 //~~~~~~~~~~~~Erase Saved Element Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
 function eraseThis(event){
   var target = event.target.parentNode
+  if (target.classList.contains("saved-posters-grid")){
+    target = event.target
+  }
   savedPostersSection.removeChild(target)
+  for (var i = 0; i<savedPosters.length; i++){
+    if (savedPosters[i].id == target.getAttribute("id")){
+      savedPosters.splice(i,1)
+    }
+  }
 }
 
 //~~~~~~~~~~~~Modal Functions~~~~~~~~~~~~~~~~~~~~~~~~~//
-// function displayModal(event) {
-//   console.log(event.target)
-//   var target = event.target.parentNode;
-//   document.querySelector('.modal').classList.remove('hidden');
-//   document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
-//   document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
-//   document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
-// }
+
+function displayModal(event) {
+  var target = event.target.parentNode;
+  clickCount++
+  if (clickCount === 1){
+    singleClickTimer = setTimeout(function(){
+      console.log("hello")
+      clickCount = 0
+      document.querySelector('.modal').classList.remove('hidden');
+      document.querySelector('.modal-img').src = event.view.currentPoster.imageURL;
+      document.querySelector('.modal-title').innerText = event.view.currentPoster.title.toUpperCase();
+      document.querySelector('.modal-quote').innerText = event.view.currentPoster.quote;
+    },200)
+  } else if (clickCount === 2){
+    clearTimeout(singleClickTimer)
+    clickCount = 0
+  }
+}
 
 function closeModal() {
   document.querySelector('.modal').classList.add('hidden');
+}
+//~~~~~~~~~~~~~~~~~~Select Single Input to Edit~~~~~~~~~~~~~~~~~~~~~//
+function editPosterTitleAndQuote(event){
+  event.target.setAttribute('contenteditable', true)
+  console.log(event.target.parentNode.getAttribute('id'))
+}
+
+function modifyObjectTitleAndQuote(event){
+  var target = event.target.parentNode;
+  for (var i = 0; i<savedPosters.length; i++){
+    if (savedPosters[i].id == target.getAttribute("id")){
+      console.log(savedPosters[i].id)
+      console.log(savedPosters[i].title)
+      console.log(target)
+      console.log(target.getAttribute("id"))
+      savedPosters[i].title = document.querySelector('.mini-poster-title').innerText;
+      savedPosters[i].quote = document.querySelector('.mini-poster-quote').innerText;
+    }
+  }
+}
+function modifyImage(event){
+  var target = event.target.parentNode;
+
+  for (var i = 0; i<savedPosters.length; i++){
+    if (savedPosters[i].id === target.getAttribute("id")){
+      savedPosters[i].imageURL = document.querySelector('.mini-poster-image').src
+    }
+  }
 }
