@@ -368,6 +368,8 @@ function onDragStart(event) {
   event
     .dataTransfer
     .setData('text/plain', event.target.id);
+
+    document.querySelector('.saved-posters-grid').classList.add('highlight');
 }
 
 function onDragOver(event) {
@@ -376,12 +378,17 @@ function onDragOver(event) {
 
 function onDrop(event) {
   var id = event.dataTransfer.getData('text');
+  document.querySelector('.saved-posters-grid').classList.remove('highlight');
 
   var draggableElement = document.getElementById(id);
   draggableElement.classList.remove('highlight');
   var dropzone = event.target;
 
-  dropzone.appendChild(draggableElement);
+  if (dropzone.classList.contains('saved-posters-grid')) {
+    dropzone.appendChild(draggableElement);
+  } else {
+    return;
+  }
 
   event.dataTransfer.clearData();
 }
