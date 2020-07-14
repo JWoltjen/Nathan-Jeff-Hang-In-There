@@ -15,11 +15,10 @@ Objective: When the page loads, we should see a poster with a randomly selected 
 
 ### Iteration 1 - Switching Views
 Objectives:
-1. When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-2. When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-3. When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
+   When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
+   When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
+   When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
 
-In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 ![alt image: implementation of Iteration 1](https://recordit.co/Ly4Zpf6QER)
 
 ### Iteration 2 -
@@ -38,19 +37,33 @@ When the save button is clicked, several things will happen:
 ### Iteration 3 -
 Objectives:
 
-When a user clicks the "Save This Poster" button, the current main poster will be added to the savedPosters array.
-If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
-When a user clicks the "Show Saved Posters" button, we should see the saved posters section
-All the posters in the savedPosters array should be displayed in the saved posters grid section
+    When a user clicks the "Save This Poster" button, the current main poster will be added to the savedPosters array.
+    If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
+    When a user clicks the "Show Saved Posters" button, we should see the saved posters section
+    All the posters in the savedPosters array should be displayed in the saved posters grid section
+
 ![alt image: functionality of Iteration 3](https://recordit.co/iTvlCBQHwf)
 
 ### Iteration 4 -
 Objectives:
 
+From the saved posters view, if a user double clicks a saved poster, it will be deleted
 
+![alt image: functionality of Iteration 4](https://recordit.co/NWO5fqkKuS)
 
 ### Bonus Fancy -
 
+  Implementation of Data Validation for Saving Poster
+
+![alt image: data validation](https://recordit.co/dTN1KaYxI0)
+
+  Updating Image Title & quote
+
+  When user clicks a saved poster, create a modal to view it larger
+  ![alt image: modal](https://recordit.co/MGF2vbJSDY)
+
+  When a user drags a selected saved poster, it will change its order within the saved posters grid
+  
 ## Key Concepts and Challenges
 
 1. Using Classes
