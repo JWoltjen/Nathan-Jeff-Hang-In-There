@@ -364,12 +364,9 @@ function modifyImage(event){
 
 //~~~~~~~~~~~~~~~~~~Drag & Drop~~~~~~~~~~~~~~~~~~~~~//
 function onDragStart(event) {
-  console.log(event);
-  event
-    .dataTransfer
-    .setData('text/plain', event.target.id);
+  event.dataTransfer.setData('text/plain', event.target.id);
 
-    document.querySelector('.saved-posters-grid').classList.add('highlight');
+  document.querySelector('.saved-posters-grid').classList.add('highlight');
 }
 
 function onDragOver(event) {
@@ -378,11 +375,10 @@ function onDragOver(event) {
 
 function onDrop(event) {
   var id = event.dataTransfer.getData('text');
-  document.querySelector('.saved-posters-grid').classList.remove('highlight');
-
   var draggableElement = document.getElementById(id);
-  draggableElement.classList.remove('highlight');
   var dropzone = event.target;
+  document.querySelector('.saved-posters-grid').classList.remove('highlight');
+  draggableElement.classList.remove('highlight');
 
   if (dropzone.classList.contains('saved-posters-grid')) {
     dropzone.appendChild(draggableElement);

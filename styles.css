@@ -173,12 +173,6 @@ button:hover {
   cursor: pointer;
 }
 
-.drop-zone {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-}
-
 .highlight {
   background-color: yellow;
 }
