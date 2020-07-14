@@ -3,22 +3,55 @@
 A Javascript project by Nathan Darrington and Jeff Woltjen.
 
 ## Introduction
+This project entailed constructing a motivational poster that could be created from preset values, or a user could construct their own. The project allows the user to save poster and remove saved posters. This was the first project for the 2006FE cohort at the Turing School of Software and Design. The project spanned approximately eight days.
 
 ## Progression
 
 ### Iteration 0 - Main Page
 
+Objective: When the page loads, we should see a poster with a randomly selected image, title, and quote.
+
+![alt image: implementation of Iteration 0](https://recordit.co/l3jQwvO9E5)
+
 ### Iteration 1 - Switching Views
+Objectives:
+1. When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
+2. When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
+3. When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
+
+In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+![alt image: implementation of Iteration 1](https://recordit.co/Ly4Zpf6QER)
 
 ### Iteration 2 -
 
+On the new poster form view, users should be able to fill out the three input fields and then hit the save button
+When the save button is clicked, several things will happen:
+
+    Save the submitted data into the respective arrays (image URL into the images array, etc) so that future random posters can use the user-created data
+
+    Use the values from the inputs to create a new instance of our Poster class
+    Change back to the main poster view (hiding the form view again)
+    Display the newly created poster image, title, and quote in the main view
+
+![alt image: functionality of Iteration 2](https://recordit.co/YQ3bFHGXPG)
+
 ### Iteration 3 -
+Objectives:
+
+When a user clicks the "Save This Poster" button, the current main poster will be added to the savedPosters array.
+If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
+When a user clicks the "Show Saved Posters" button, we should see the saved posters section
+All the posters in the savedPosters array should be displayed in the saved posters grid section
+![alt image: functionality of Iteration 3](https://recordit.co/iTvlCBQHwf)
 
 ### Iteration 4 -
+Objectives:
+
+
 
 ### Bonus Fancy -
 
-## Key Concepts
+## Key Concepts and Challenges
 
 1. Using Classes
  The poster class stored in poster.js was the key to updating data for current poster before pushing that data into the various arrays: title array, quote array, images array, and saved poster array. To update current poster, we created functions that would randomly select one element from each of these arrays to become properties of the currentPoster object, an instantiation of the poster class. Once we had acquired values for each of currentPoster's keys, we could run a function that would return the currentPoster to the main section of the page.  This also allowed us to dynamically update the values of the currentPoster class when working with related concepts such as making custom posters.
@@ -36,17 +69,7 @@ As discussed above, we used event targeting to dynamically select and remove pos
 Event listeners were the key to implementing navigation between main sections, as described above. They were also utilized to display information from the arrays, save information into the arrays, and remove information from the arrays which represented our data model. One challenge that we encountered was how to dynamically attach event listeners onto objects that had not yet been instantiated within the DOM. Once we created the DOM element into the function, we added the event listener into the function in real-time. This was a study in control flow and how computers interpret and display data line by line.
 
 6. GitWorkflow
-Observing and understanding the fundamentals and theory behind GitWorkflow was identified early in the project as one of our main goals. GitWorkflow can initially be tedious and esoteric, however using it properly can save team members valuable time if it is employed correctly. We were careful to never work on the master branch, as well as never to push the master branch to GitHub when creating pull requests. By using Driver/Navigator at least 80% of the time, we did not encounter any merge conflicts. By committing when each new piece of functionality was implemented, our pull requests were easy for the non-pulling partner to decipher. When the new driving partner pulled the newly merged master branch to his machine, we immediately created new branches using git checkout -b. 
-
-## Challenges
-
-1. Poster class as data storage/display
-
-2. DOM v. Data Model--Display v. push
-
-3. Multiple event listeners on savedPosters array
-
-4. Dynamically editing selected parts of Main Poster
+Observing and understanding the fundamentals and theory behind GitWorkflow was identified early in the project as one of our main goals. GitWorkflow can initially be tedious and esoteric, however using it properly can save team members valuable time if it is employed correctly. We were careful to never work on the master branch, as well as never to push the master branch to GitHub when creating pull requests. By using Driver/Navigator at least 80% of the time, we did not encounter any merge conflicts. By committing when each new piece of functionality was implemented, our pull requests were easy for the non-pulling partner to decipher. When the new driving partner pulled the newly merged master branch to his machine, we immediately created new branches using git checkout -b.
 
 ## Links to Authors Repositories
 
@@ -56,7 +79,8 @@ _Hint: How will you update the data model to achieve this?_
 
 ## Acknowledgements
 
+We would like to acknowledge our instructors, Hannah Hudson, Casey DallaValle, and Scott Ertmer for their guidance and help during the course of the project. We would also like to thank the other members the 2006FE cohort for creating and foster a dynamic and inclusive atmosphere which fosters learning and embraces fun while simultaneously undergoing significant challenges and growth.
 
-
+## Additional information Concerning the Project
 
 Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
