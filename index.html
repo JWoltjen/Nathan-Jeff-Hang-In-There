@@ -35,15 +35,15 @@
     <div class="divider"></div>
     <button class="show-main">Nevermind, take me back!</button>
   </section>
-  <section class="saved-posters hidden">
+  <section class="saved-posters hidden" ondragover="onDragOver(event);" ondrop="onDrop(event);">
     <h2>Saved Posters</h2>
+    <article class="saved-posters-grid"></article>
     <article class="modal hidden">
       <span class="close">&times;</span>
       <img class="modal-img" src="" alt="nothin' to see here">
       <h1 class="modal-title">Title</h1>
       <h3 class="modal-quote">Quote</h3>
     </article>
-    <article class="saved-posters-grid"></article>
     <button class="back-to-main">Back to Main</button>
   </section>
   <script src="./src/poster.js"></script>
