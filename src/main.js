@@ -377,11 +377,22 @@ function onDrop(event) {
   var id = event.dataTransfer.getData('text');
   var draggableElement = document.getElementById(id);
   var dropzone = event.target;
-  document.querySelector('.saved-posters-grid').classList.remove('highlight');
+  var savedPostersGrid = document.querySelector('.saved-posters-grid');
+  savedPostersGrid.classList.remove('highlight');
   draggableElement.classList.remove('highlight');
 
   if (dropzone.classList.contains('saved-posters-grid')) {
     dropzone.appendChild(draggableElement);
+    savedPosters = [];
+    for (var i = 0; i < dropzone.children.length; i++) {
+      var savePoster = new Poster(
+        dropzone.children[i].childNodes[1].currentSrc, 
+        dropzone.children[i].childNodes[3].innerText, 
+        dropzone.children[i].childNodes[5].innerText
+      )
+      savePoster.id += dropzone.children[i].id;
+      savedPosters.push(savePoster);
+    }
   } else {
     return;
   }
