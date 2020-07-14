@@ -390,9 +390,11 @@ function onDrop(event) {
         dropzone.children[i].childNodes[3].innerText, 
         dropzone.children[i].childNodes[5].innerText
       )
-      savePoster.id += dropzone.children[i].id;
+      savePoster.id = dropzone.children[i].id;
       savedPosters.push(savePoster);
     }
+
+    displaySavedPosters();
   } else {
     return;
   }
