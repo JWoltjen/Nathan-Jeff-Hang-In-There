@@ -256,7 +256,7 @@ function checkForDuplicates(poster){
   if (savedPosters.length !== 0) {
     for (var i = 0; i < savedPosters.length; i++){
       if (poster.src === savedPosters[i].src && poster.title === savedPosters[i].title && poster.quote === savedPosters[i].quote) {
-        return savedPosters;
+        return alert ("You've already saved this poster!");
       }
     }
     savedPosters.push(poster);
