@@ -115,6 +115,7 @@ button:hover {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
+  margin-bottom: 200px;
 }
 
 .mini-poster {
@@ -176,4 +177,8 @@ button:hover {
   width: 200px;
   height: 200px;
   background-color: green;
+}
+
+.highlight {
+  background-color: yellow;
 }
